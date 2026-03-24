@@ -1,472 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simran Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simran Portfolio</title>
 
-        body {
-            background-color: #f0f2f5;
-            color: #333;
-            line-height: 1.6;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
-        .profile-name {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
+body{
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color:white;
+    scroll-behavior: smooth;
+}
 
-        .profile-title {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 10%;
+    position:fixed;
+    width:100%;
+    background:black;
+}
 
-        nav {
-            /* Black -> Blue gradient navbar */
-            background: linear-gradient(90deg, #000000 0%, #0b1220 40%, #1e3a8a 100%);
-            color: #ffffff;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 0.5rem 2rem;
-        }
+nav h1{color:#00ffd5;}
+nav ul{display:flex;gap:20px;}
+nav ul li{list-style:none;}
+nav a{color:white;text-decoration:none; transition: color 0.3s ease;}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+nav a:hover{color:#00ffd5;}
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+/* HERO */
+.hero{
+    height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+}
 
-        .nav-image {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #764ba2;
-        }
+.hero img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border:4px solid #00ffd5;
+    margin-bottom:15px;
+    transition: all 0.3s ease;
+}
 
-        .nav-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
+.hero img:hover{
+    transform: scale(1.1);
+    border-color:#00e6c3;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
+.hero h2{
+    font-size:4rem;
+    margin-bottom:10px;
+}
 
-        nav a {
-            color: rgba(255,255,255,0.95);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
+.hero p{
+    font-size:2rem;
+    margin-bottom:20px;
+}
 
-        nav a:hover {
-            background-color: rgba(255,255,255,0.06);
-            color: #a5b4fc; /* light blue on hover */
-        }
+/* BUTTON */
+.btn{
+    padding:10px 20px;
+    background:#00ffd5;
+    color:black;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    margin-top:10px;
+    transition: all 0.3s ease;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+.btn:hover{
+    background:#00e6c3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,255,213,0.4);
+}
 
-        .section {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin: 2rem 0;
-        }
+/* SECTION */
+section{padding:80px 10%;}
 
-        .section h2 {
-            color: #764ba2;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
+/* BACKGROUNDS */
+#about{background:#16213e;}
+#projects{background:#0f3460;}
+#calculator{background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* sleeker calculator gradient */}
+#calendar{background:#0f3460;}
+#contact{background:black;}
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-            align-items: center;
-        }
+/* ABOUT */
+.about{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:15px;
+    border-radius:10px;
+    flex:1;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    text-align:center;
+}
 
-        .skill-card {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
+.card h4{
+    margin:0 0 10px 0;
+    color:#00ffd5;
+}
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+.card p{
+    margin:0;
+    font-size:14px;
+    line-height:1.4;
+}
 
-        .project-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
+.card:hover{
+    background:rgba(255,255,255,0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
 
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
 
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+.project{
+    background: linear-gradient(145deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+    width:30%;
+    color:white;
+    border-radius:10px;
+    overflow:hidden;
+    transition: all 0.3s ease;
+    min-height:250px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    margin-left: 450px;
+}
 
-        .project-info {
-            padding: 1.5rem;
-        }
+.project:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
 
-        .project-description {
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
+.project img{
+    width:520px;
+    height:250px;
+    object-fit:cover;
+    display:block;
+}
 
-        .project-details {
-            margin-top: 1rem;
-        }
+.project h3{
+    padding:10px;
+    margin-left:100px;
+    background:rgba(0,0,0,0.5);
+    color:#00ffd5;
+}
 
-        .project-details h4 {
-            color: #764ba2;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
 
-        .project-details ul {
-            list-style: none;
-            margin-bottom: 1rem;
-        }
+/* CALCULATOR */
+.calc{
+    max-width:300px;
+    margin:auto;
+}
 
-        .project-details ul li {
-            padding: 0.3rem 0;
-            padding-left: 1.2rem;
-            position: relative;
-        }
+#display{
+    width:100%;
+    padding:15px;
+    font-size:20px;
+    margin-bottom:10px;
+}
 
-        .project-details ul li:before {
-            content: "•";
-            color: #667eea;
-            position: absolute;
-            left: 0;
-        }
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
 
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
+.buttons button{
+    padding:15px;
+    font-size:18px;
+}
 
-        .tech-tag {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
+/* CALENDAR */
+.calendar{
+    max-width:400px;
+    margin:auto;
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+}
 
-        .view-project-btn {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+#calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
 
-        .view-project-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
+#calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
+}
 
-        .btn-arrow {
-            display: inline-block;
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-        }
+.day{
+    padding:10px;
+    border-radius:5px;
+    background:rgba(255,255,255,0.1);
+}
 
-        .view-project-btn:hover .btn-arrow {
-            transform: translateX(5px);
-        }
+.day.today{
+    background:#00ffd5;
+    color:black;
+}
 
-        .contact-form {
-            display: grid;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+.day-name{
+    font-weight:bold;
+    padding:10px;
+}
 
-        input, textarea {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
+/* CONTACT */
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border-radius:8px;
+    border:none;
+}
 
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: opacity 0.3s ease;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #333;
-            color: white;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem 0;
-            }
-
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem 0;
-                gap: 1rem;
-            }
-
-            .nav-logo {
-                justify-content: center;
-            }
-        }
-    </style>
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:black;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1 class="profile-name">Simran</h1>
-        <p class="profile-title">Web Designer</p>
-    </header>
 
-    <nav>
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="simran.jpg" alt="Simran's Logo" class="nav-image">
-                <span class="nav-name">Simran</span>
-            </div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav>
+    <h1>Simran</h1>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#about">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#calendar">Calendar</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-    <div class="container">
-        <section id="about" class="section">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="seerat - Copy.jfif" alt="Simran" style="width: 100%; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                </div>
-                <div class="about-text">
-                    <p>Hello! I'm Simran, a passionate web developer and designer with a keen eye for creating beautiful and functional websites. I specialize in front-end development and love bringing creative ideas to life through code.</p>
-                    <p>With a strong foundation in modern web technologies, I strive to create user-friendly and responsive websites that make a lasting impression.</p>
-                </div>
-            </div>
-        </section>
+<!-- HERO -->
+<div class="hero">
+    <img src="simmi.jfif" alt="Simran's profile picture">
+    <h2>Hello, I'm <span style="color:#00ffd5;">Simran</span></h2>
+    <p>Web Developer | Digital Marketer</p>
+    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+</div>
 
-        <section id="skills" class="section">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>HTML5 & CSS3</h3>
-                    <p>Expert level proficiency in creating responsive layouts</p>
-                </div>
-                <div class="skill-card">
-                    <h3>JavaScript</h3>
-                    <p>Strong knowledge of modern JavaScript and ES6+ features</p>
-                </div>
-                <!-- <div class="skill-card">
-                    <h3>UI/UX Design</h3>
-                    <p>Creating intuitive and beautiful user interfaces</p>
-                </div> -->
-                <div class="skill-card">
-                    <h3>Responsive Design</h3>
-                    <p>Building mobile-first, responsive websites</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="https://picsum.photos/600/400?random=1" alt="E-commerce Website Project" style="object-fit: cover;">
-                    <div class="project-info">
-                        <h3>Fashion E-commerce Website</h3>
-                        <p class="project-description">A modern e-commerce platform built with the latest web technologies.</p>
-                        <div class="project-details">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Responsive product catalog with filtering</li>
-                                <li>Shopping cart with real-time updates</li>
-                                <li>Secure payment integration</li>
-                                <li>User account management</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">React</span>
-                            </div>
-                            <a href="#" class="view-project-btn">View Project <span class="btn-arrow">→</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://picsum.photos/600/400?random=2" alt="Portfolio Template Project" style="object-fit: cover;">
-                    <div class="project-info">
-                        <h3>Creative Portfolio Template</h3>
-                        <p class="project-description">A customizable portfolio template designed for creative professionals.</p>
-                        <div class="project-details">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Customizable color schemes</li>
-                                <li>Dynamic project galleries</li>
-                                <li>Smooth animations</li>
-                                <li>Contact form integration</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">SCSS</span>
-                            </div>
-                            <a href="#" class="view-project-btn">View Project <span class="btn-arrow">→</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://picsum.photos/600/400?random=3" alt="Weather App Project" style="object-fit: cover;">
-                    <div class="project-info">
-                        <h3>Weather Dashboard App</h3>
-                        <p class="project-description">A feature-rich weather application with real-time data and forecasting.</p>
-                        <div class="project-details">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Real-time weather updates</li>
-                                <li>5-day weather forecast</li>
-                                <li>Location-based weather</li>
-                                <li>Weather alerts and notifications</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">API</span>
-                            </div>
-                            <a href="#" class="view-project-btn">View Project <span class="btn-arrow">→</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <h2>Contact Me</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="enter name">
-                                <input type="number" placeholder="number" required>
-                <input type="email" placeholder="Your Email" required>
-                <input
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
+<!-- ABOUT -->
+<section id="about">
+    <h2>My Skills</h2>
+    <div style="text-align:center; margin-bottom:20px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMjHiEggm5tFO1Nffjfc-1LUPcFywf49FGxQ&s" alt="Simran's portrait" style="border-radius:50%; border:3px solid #00ffd5;">
     </div>
+    <div class="about">
+        <div class="card">
+            <h4>HTML</h4>
+            <p>Markup language for creating web pages and structuring content.</p>
+        </div>
+        <div class="card">
+            <h4>CSS</h4>
+            <p>Styling language for designing responsive and attractive web interfaces.</p>
+        </div>
+        <div class="card">
+            <h4>JavaScript</h4>
+            <p>Programming language for adding interactivity and dynamic behavior to websites.</p>
+        </div>
+        <div class="card">
+            <h4>C</h4>
+            <p>Low-level programming language for system programming and embedded systems.</p>
+        </div>
+        <div class="card">
+            <h4>C++</h4>
+            <p>Object-oriented language for game development, system software, and high-performance applications.</p>
+        </div>
+        <div class="card">
+            <h4>MS Office</h4>
+            <p>Proficiency in Word, Excel, PowerPoint for document creation and data management.</p>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Simran. All rights reserved.</p>
-    </footer>
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+    
+        <div class="project">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQBDgMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAFBgMEAQIHAAj/xABHEAACAQMDAQQGBQgHBwUAAAABAgMABBEFEiExBhNBUSIyYXGBkRQjUqGxBxUkM0JywdEWQ2KCkqLwJTREY4OywlNU0uHx/8QAGQEAAwEBAQAAAAAAAAAAAAAAAQIDBAAF/8QAJBEAAgICAgICAwEBAAAAAAAAAAECEQMhEjEEQSJREzJhFEL/2gAMAwEAAhEDEQA/AOnzVXNWsb0qpn06hIoiEetUsY4qD/iDVmOpDmq+sa3kXelan16kJ+roo4Ba5a74Xk+zUHZNN127+QxWnam7+sS3T95vd4VL2Of9IuP3RWOVflo1Rv8AGNyVajYKMnoKpBqr6jfG2iQj9o4rTy47IOLYfinRhhaxLOVBwMmlu31Y8cVZk1BioOw03+lUL+BlbVFe4cmTe3ljwqtFpEjDMkzIp+dGUXCh3Hpn7qjuG5FJ+NP5MssjS4oqxWlvbDcq94V/akbcfh4CvMWYLu8eCT4VvK2cVFLnw60zqqR2wNqKNbzFjwnUNjNUnkjlYEvG2ecL1pkuYu/iGACcUIltkto3llibA8dvFYM8HFm/BNNU+yMjcg2+6iWjwCONrhsEt6Iz5UKsg+oSERqywD15DwT7BTGI1jhSNV2qOAPIU2GLl8mT8hpfFGZLOB1wFC4546ZoRfpdQyjeCqYwpXkGjUT+hjy4rfCSRlJFDKeorU1aMcXxYCglkDDJJ99E458er1qhdQ/Rrhow5KdVJqE+hgqc5qabHkk9hhrl9pxVdrgMhDVSkkk7okeRoWqTshctgU7YnELSIjrnyoZchdp9lZhFyYMxnOelU7ySWKNhInLcZo1/AXT7A+pMhMnspcuCM8UTv5f15znnFApJM0tF70V5qpvt8TirEr1TlNUihGyJ9meuTUea8xrQmmYiZ9Rx1UuRsmNWwcVWvPWeqz6M67IG/WK3nUqiq6ekVJ/ZqylTGMSDmvB8qRXpKpSTFFb2c0OmFIT9aue+1e4I6Bto9w/0aJ9jpsahIn2os/eKV3m7yR3PixPzNHeyD/7X/wCk38KwRdzs2ONQofg3FANbuyJ8B12x8Yox3qqCWPA60JvrTS7kb4XLyE5kGTWjK9EYUnsGw6iM7cjmmC0nWeaJdyn2ZpU1S2htEVkJXccYJq32QBlvZp2ztiTaOfE//lRxNudF5xXG0OMku4Z8j91QygHkHOKwTzjwNR79oIJ8cE1uZlSPMeK1c1gN6K/EVgmgMbR8jH2aCdqtXn0+0zZgElsO55C0YUnBA8aWu2cqWWiy7gC0noLnxJpci+A+J1NEnY/Urq6SaS6fdCZPQOMYPjTPIR6O05BFKfY1kl0C1CADbuD+05pljYlcHw6VPGtDZnc/olgbBat0kAc58qgDFSWHgKxJJhS37TVSiPZHqTIWRjxmg9zcPCwAXI8KJ35jECGYnIPBFCblw4Ta3O7mkcRlI0n1Bo4GZ42AxUonjECqThmjzUWrfW2LRxMpZsCql7E0N2qsRhIdtdTSFbVBnTmEkKiHkDrUerxzGDlRtzyal0wFLGPYBnYOnnWty8gtH73z4zWhL4kX2c2v5Mx3J/5uBQiSQgnp8aI3Xp27MDyZjQmcEHmo+zXT42RSSn+zVWRi3XHwrdzUDBm9UZ+NOkTZoWIPStGc+QrZlI9YYqFjg07Qtn1O/r1XuvXarJOelUp23MxNPPolFbMBMRhvHOa2U+deyTEmBmoiTS1oYmag+pTCCyvJD1ETgfLAotn0OKWu00uzSLljxvwo/wAQqOTSKY1bEtWwMHnk0e7Iufzv/wBJv4Uthl8zR/sWVOrsc8iFuvvFY4LZsl+rHHVZHTTZHUjepB9LxGa30WygXQpbyYZmYEj0jjNWgI5Y9kqqykYIx1FCJtOFiGaAt3JOSpPq1aUXdmb1QsazeXNy4SSHYqng009kbcwaMrupDzOWORjjoPwpV7QSAzW4VgBu5wafbZRFbwRDgKgGPhQ8eNSdlMsvikiXdggHoahut3cvtALbTgE4zXpCSD5jpUTyHAfqDwR5VrZBG1nKXh+tXY+c4qRqEx3LfS5ecKtEVfeARzSxC1WzYk+FIP5TbsG4tbVSeFLsKe9xzxXJO292LntFcEEnZhB8KXN+lD4dzscvycNv0SQH9mcj8DTgvApJ/Jq+dHlHj35/AU6Z4J8hXY1oGT9jEjbUJB6VB3neMD0GKhvrrbIsKjkjJrEJG3mubsCWixdQm4t+7RSxz0AzQsadLBKCY5MeTKaP2c4tmEz+oOtXV1G3nU4UMg68UyohPI4sVLqMuF7tVA3DORVh0iuJNrxJuYgZBppsW054pJIo4xj1uKE3S2EIWRImMokyFBGT7OfCqJJE3NsqRxJFI0cAxg4wTQ/XzcRw5k2iPaxOOvSmezjs+/WSUqrlTkB9wHxpW7RRPFBqMsj5hS2lZM+6n7Qqezlck6/QYTk8sxofLKD4/OpLhv0C28yDVIsDnJIqPHZt56NJG5qIt/rNbsV+2flULkZ4OadIk3Z4niomPNZJHjWhKfaIo0Cz6ncTH+tQe+qM8zq7CQIw9nFHPo4b1/uFV7qDcSkajjnNdOLoEZKwej7lVh08q1kPlU5jKDa+K1IB8K7tDeyISYTmlfttLs0xUxjfIo+QJppZBikn8oMwV7S3B5w0hHv4/gallXxZTF+yFPfimfsEm++u3IPoRAHHtb/6pTzmnX8ne0C/lY4yY1+PpVnhG5I1ZXUBvR0U+q9bSpDdQvDMJNjjBraR1TJdsYGSK0tplmi7xQQpPG7rWlKPRjfLsEt2M0gzq+btmVgw+syPOjwRMk7X+VV21O2tTsZySeu3nmrME8dxGZImOB1poQi1cQTcl+xgRRschiD5YqneILcBd2c8keVE4lURmRmwoBOT0FIV7qst3dzOHYI7egvkvgKTNOMFQ2GDm2ye3lZp5C3BLZxRa2uMYBNVIYVkiWT9rbU6QAYyaEFoeTTLE03d28kmeg++uJ6lM02o3MjclpDXW9Xk2wi3jBJPrYrkWpI0WoXIXkhzxXZdofAdF/JZ6em3HkJj+Ap0lkSKKR5G2og3E+wUrfk1QRdmEmbjvZHY8eRI/hRbV7eXU7Dud0lvCxzIBjfIB4c9M0t1HRNpOewFb6wdQummigO1zxu8BRyzuJZSF+jyAg4zQlH0/SYgsk0EG3zPeOT4+wGsp2qhe3eSwQyqp2lmfJJ91Sgpp3LorPjJVAbbqCFoBEkrBzy3FVN9vYgpLJ6Tfsk5J+FCIJNb1CzNyFS2tmOMqPTf3Ud0y0ltdImuFjBfON7D060QTkZJ1Ds0gt768dJYwLW2XJJkX0pPL0fCq72U4eOVvS3vjPtq/Z37pYzvNuZseiaFWd9N9MhV5CUDEgGrKCIObYW0+CaC6WWWEtHg0qdvJZI7LU5RJ9XJC+E+yCcU6XGoXBhCQmNDnqfGufdvP0fQ75mbczKoJz5tVGqQsXs5ndti2tf3D+NUi1W718JbjA/V55FUWbPl8KlRpswTUZNePXOa9v8AID4imSFbNGNQk81K8nGNo+FVyea6gWfYoOelasmSxHU1lAcE+A8ayGBOM84zVGiaZVlgUnDVTnh7oZXkedFQAzZPjWrxq64IGKRwKKQCY8Z8K5r20n+ka6yg5EcaqPxP40+68Tbk93LmLxI65rnP5u1DVNangt4Wa4bdJsyBlR5Z6+FZsjvSNmJVtg1UPlTx2BsZJbC5ePOe+xx7AP50lOrxO8cyFXQ4dG4INMmiySx6WkSXU8HfStt7slegXnIpI/EpkqURscM7SAHcIVzIW5JweRV2xZbmx49XlQR4ClC4muLfbKksgCkd6Q+O8Hjnz+NS/nOZyWs7uVISD6C8KT7RilTaditJpJBtdKkODEiuueCTmjdnbNFHtw2T6x28Vz+PWdXhOy0vGhTOWACt+Ipt7NyazcW813f6hvgc7bdRHGp46k+j8Kr48u4qzPni75Nk/a+6NpozQJw8/ocHnb4/y+Nc9RXHX2fOnTtErTAGVmc4yCfD5UrRKC7DyrP5dqdmvxa4DEswD71H1co3D2H/AFmpGk2LvJ9wqlYrssFeU8AkAn31o0xc4/ZrYtxRl9szIQyFpDyTyfOkfUtEtDqt1ea3qtvaWhf0Y4nDysPcMgfjTtIwVPS6VxXVnWXUbuUhTmZuo9tBoMHs7BpmrW1jpkMGjwMLcKDE0pJJ9vNUrjUtSulKzbkLHcrxc9D4ioNGi/2PaAKCRCuPHwFEwyG6ksmJjlWIYGccEZqfCxnlUOlYvalpUWssj3ayfSVULugBKuBWIrdbFktxbtCigZPTdTPDYmC3hi3YEZJyPH31Su2t7i9CEh2PGBQeH+iry229B3s92jeOVTPia3VdoQD1atXevTT3TCHMcBP6vz99AfzbJFNHDbAQ7/F/CqmqSX2m6kYUCXKY9ZeK0R0jJLbsa3nEli8vqjPTHFDhcCV4Y9u0jJz50OtdaMka2U8bR95kge6tYrqJbmLIbJBFOmI0MFr9ZB3czFmTkNmkn8oTCHS5YxJvWUxH3c5pwtJbMRNIzlSF53ccVz78o9xb9wEtZQ6d8q8HPRSapVoC7E+/OGhU9RCv8aqAFs4qTUpsToB4RJVIysenFKolXImKt5VE7beDURYnryKxxjgfdRURHIw7kn0a1KynkKT7qw2c46UT0fs9qetBzp9u8kcfrSbTjPlnHWg9BVs+sp2KoEX1D1qBGJ8Rk9cnoKBar2utgpt7aMuftNwBQq11ubvi9yxMRGPAbfb7aLkikcTrY6vdxQRGWUqi+BJqnJctcKdh2xnn3++lufX9OKZknWUj+rXkn+VUrbtTHHIRKpERPA8VFRySb6LQxV2NUkatGVYBkPgRSxrvZ57jE+nzNFcw5MTA4IPkDTHZXlvqEAktJVkT2Hp762K5bjnmszXtFk60znt1ZajqDifWYAZ48KAg2l1Ax4Dx/nVu6eMfQNqFQjN6O0jHFPYRYkLsM88eyqbyW0sndXBUOeQH/hRujntaEm9vIXBgdvSc4xWzQrbx7YwQuOlMeqaTp1xt7+MRy/sSoMEfzoFqFrd2ilGZp4j/AFoX8anJyb0CqQCS5WS9kCNlMYNdKS3ljtLSJeI44FA9+Oa5bHDtvyiRPjPJ2nmu0oIBbqpdduzoWFa/GjVmbNLQt6msv0V2Y7tg+QpXxJAkk80ZEIXcW8MUz66571beCQYkzuIPyoFfRtqejTQWzd1LC4E0R8hyR8eoqHkrk6NXjWo2Q295LJZRJdFy4XLccVmK4hRstv8AdU9zJaWsUZnmRHIALE4DcdapNc6fIf8AeoD/ANQVbHJSSIzi4No2utRUgiNOgzya5JfRqt/OrZA7xj86649vayQlhLGF+1uFcx7VxwxazKYJlkRwCSp6GmaBFnQ/yfuLzRrUnLiH6tvh0q/2p0y6kv7fUbOTZKiFJD545H4n5VzrsN2gutH1WO2icGzuJPrl25zx1Hyrpup63bXenSpbGRZceizrjJqb1IWd0U4xqFxYrIZgcg+iKF6VME1QNIMMh8R41r+c70FO7QxxxDA8S5qmZ7pp2kERDE5JyKdtEoxlQ1atqaXE6EZG2hMWoLJeFADgePnQeSW/LemqnnxIqexXu2LzLhjRU0xXjl2Erxib22Y5CqpOalBD3cD+AQke2oZZFLhiSQFx0ra2nt95MmfRUBAKonH7EcZfQwyII9PujNHkd0SAR1rmf5Qng+lwRQx92m7fj27cV0aHW4lhKyoZPDkeFc77YQyatqAuECoAWyM/Kn5xS7BGErFfUggueWzhF8PZVJtg9U5ovdabJLMGDpzgZPhR6x7CR3cQdNTSTPhEBQWSL6KODXYkHy86txadcTwrLHBIyHowXrTk35P4V/41gfMirUXZe6itRBFfpsUejnNBzBwEK30yafULayAaOS5lWJcr0ycZ+Fd1nt9O0fS7axtJGhgj4XuGAZuuSfPnNc4sdJk0fXLPUbq6LC3fdtaMkEYI60+DtDod4o75YSB0yp/141LI+SpMdRaBt/2bu2maU3EuT5Gh8ugSBcNdXHuLV2U6XaMMsrf4qgbQdLb14WP9810sF+zTHyYr0ccGjSRrhJ3+NRPo7tyzua7N/RzSD/wf+dv51t/RzR//AGEfzNI/Hk/Y3+qH0ch0gXekXQuLOWRSOqn1WHkRXRtB1y21JO6Ydzcgfq28faD40X/o/o2f9wh+VQXHZbR5iDHAbdwcq8DlCD8OK5ePNezpeRCXoxfejBy/FCZJYJY9txEQM8FuR86MXemX30KSOOeK4fb6DTfVke9lB+YApI1Cw7UWUhP5tuHjJzvhlEyfIc/dSShJPoaE4NdhW5WXAWCUuvgrnPyNVpbtraxkJMxkHrxqu7jzqPS1u7g7Qtqs3irXbRPn2qyA0YstE1SG6EzrGo8/pBY/LFIoSu6HlKFVYAtv0hVkgJdCeq8g/Gic0cgOcNg+w0Zt9Bks7xryzkngMmTLGrAJKfPHgfdRNYpP25ZAfLfWqNr0Ynxs5reatBLBewJMLW4tX762llUosmB05HOeQceYoRqOvw3WnQ6rpdw8OoXA7ie3yAdvOevl4HyzXTL/ALIaJqZRr+2eZ1JILSPgZ6+NVLj8nvZeeLZJpmBnO6N3U594IpXjvbLfnSVI5vb209ztVUaZguAGbJwPfUn5olfkQ2/xmiH4tTgfyZ6JaTi50+61C2lXOB3m8c/f99DV7CWsMgSSxtLtc+vI88bH/AxFcsb9AeZAuPs9qdzCVt7JJV8e7mjIHyahtx2N7RA4i0mLGc8yR/zrpWhaNp+i28vdaUtqjnc5SeSQH/GBirC632bMhQ3tmGBwQZ1yPhmjLFKhFnT0jmGmdjtZttShvLizhj7vPCOnl76N3On6hJtVLZzzjOOPnT+s8EpDWNrHcx/bWZfwqTdIOmmSlvZtx+NTeKfaY35E9CDH2W1N/W+jLkZ9KQg/hWy9mLtHPeSRgAdVRiPnTxLEJ1Kz2ETDx7xQQKoPp2mRtxYxxH7VvIyf9tBKXsOmLf8ARouNz3L48lgJ+/OKni7LB14mnb2CIfxNHhbqo/RtQ1eHyVY5Jx/mjP41qZtVi4guGufZPpMyH5qP4U1A69gW57JzlP0WXJ+zMu0/MZqtD2XvI/1yOp8TGocfiKZV1LV0P12iNJ5tEWT7nUVZXVJNuZdK1OMeyNX/AO1ifurkhWxcTQExiS6kX327VWm7KabcMVbVlVvs+iD99HrrtJYQDEkF8Sf2SgUj4MwxW9tqr30eLbSZJkP27mD8N7Gjo7YvR/k8sOGN9dMPZtwfuraXsBa7i9teTwOOjqAD93WjT2d2fTj0KygY/tG9MZ+ccf8AGsLZdoc/UzWEPsa5uJj/AJsUEuPQW2+xeXs32ktHzFe2l8gPqzgxtj3jOflRSS2ukgUnTJZJv2tki4+8iiiWPaMEGW/04j7Itn/+VW+51Du8d7aFh492xAP+KmF4oTp7nUIAQdAvNv8AcYfc1ALy+QyZl7PXan2Wx/hXR5ItVC8CxlPj6bL93NUn/PEbc6NDIPNJ/wCYqbytf8ncP6OkN1vQ7wARW7XMCetIg+NV5rVbiIorFSfEUs3nZ64R8tNJIPfW98UZ4qT7G9biAruEqEfvCtWu7ZesyfOk+2b6A+FTcPJqPWOoWM+FaNEk9tTU0yzx8S+dQsx1ni+dRnVrEf1oPuUmraJEwyqLj2CtwAPUAA91Nsn8Sh+dbbqFnb92Fj/CoW1cdY7G9fyIhx+NFdzZHHHlmobuO6lhcW8ixSkAK5GcV22cmkCLu8+moEuOz1zcIP8A1EQ/ieKHx299AxOmWV/Z+UbTh0+R6UTMHaBOl1ayfvIawZe0MfW2tZPaHIofjsdZK6NrSfWMbbmwjdvtLIEJ99STXd/EPSsEVPtd4WH3CoPzjq6D6zSd5/sSisN2hni4l0i6QDqVwa5RaEbsmhnvLjmF9OPmMsSPuqRodUbpNYp7RAzf+QoLddpdHuG/TbOdJB+2YmBH94c1VPaCwj5stalj/sXKbl+Z5oMdbGP6FqLHD6igH/LtFH4k1qdKuWP1mrXRHsjiX/woRYdpbi5Vma27+FTgyW7dfbg0Ttde02f0DKY5Psy8GlTTOakiQaUB11K/J9kyr+C1WvOzOl3pDXwnnI8ZZ2z8xiigWKQBlw3uatz6HBQ49+a5q/QLoBt2U0JgAloqkdGSRtw++h972L0+XJjvrhG8O8AfH4U2KwIyOPcKx1ONy/xoPGmtDfkYpRw9rtNytjPY6rAOiXE7RuR+8VP3k1Fc9p9TtCPzr2b1m2P7Uloyzxr8QQSPhTjhwRhVK55JNbjOc7iPYKZQoSUrFCw7baBekxyajJG48Lq3eI/MijkAtbhd9rfBwfFZNw/GrtxbQXAxPbxSfvqDQm47LaTK+9bdoWPjDIVNBpnJRLy2iggt3b+0xY/A1Nt4GF48OKDHQL+Af7P1i5QeCz+mPnULP2ksz9ZBbXS+aNtJoX/Bkv6HXVXUo4DKeqtyD8DxS/qXYvs3qLb7nSbdXznfCTEf8pFePaqKBhHqNo9u/wC8GFXbfXtLuf1dzCP3jil0w/JAgdjLSEAafq+t2QXosN+7KP7rZFbpouuWxzB2ouZh4JdWsbj5gA0TuNf0qDO+/iyPBTmqM3bDR484uHb91a5hSb9Hu87S249KCyu18dhaNvvzWPz/AHEZxeaTdxEeKkMKpS9udPHCRyt76qydu4j6KWhx7TSXH7KcZfQcTtHp7+s0iHydKspqlvINyupX30qtr892PQ09CD4kVC0V1Kdwg2+wcUN+hWl7Z1FF2dKk94zWuR51jj7Z+dazOVrrTbe5HK4PsoBqGhTQjdCSR5U0BwPGs94p6mllBMeGRx6Ey21e+007ZFZkB6GmPTtctb5AN4WT7Jre7s7S5UiQLk+NKur6Utnme0l6c9eak+eP3aLJQybapj1u3KSGHvqFknblZPupJ0ftVLbMIrvLoD8qarfWrO4i3iYL7DTxyKW7JSwygycw3BP675VkW8v7UrGvJeRSDMTlx7K375j0if407VidGhtSTy5+dY+hr4nPvqTdL9gD41gscfrEH96lWILk12arZQj1kD+8Vq+mWUg9K2i/wipEy3KyBseVSAN4t91NwSByfohgsre2G2CNVXyCio7zS7K9QrPAhz4gYNQ6jqItDtClm86oDWXLekmF99FRVncmild9lru2YyaNqEkXlG5yKpHXO0WjsE1K2WZOm4ePypnhvw4z3ec+2pRLDIAJIh78V0sTW7GjmvTBNn2vspAFuYpbdj9ocVYk7R6PnAl7xvAKhJNW7nTtPv02zQoT4HHIoLc9jk3d5Y3UkTDoG5FJ80N8GXP6QLn9HsL2T+5gVt+dtTkH1OjyD2yOBQzd2m00YCR3ca+XWt07XRqwXUbOeBuhOCRXcvsPH6L30ntDJ6traRD+05JrZYdac5lvraIf8uPJ++rFnrWm3QHcXKEnwzzV/wBBhnII8KZbEba9Aw2Mjgd7qVw58duFrU6TZY+s76U/25TRFoAfFlzUD2knOx8++mpCcismgaXjcLNCf7XNZfQNJcYayi+VSqt1FxkEVajMhHpig4oKkxfvux+lXSbVh7s+BWlu/wCwc8ZJtpdy+RFdGK8dawBxzU3jix1lkvZxyfs5qEBO6E/AVUNhcxH04nGPZXa3jRhgqKpz6dbS+sg+VSfjoqvIfs5daahcwAKRgDzFFItck2+kOfdTTc9n7ZuVQGh8nZ6PdwMfCuUckemK3jl2hm76T7VRGeT7VZr1WbFoj7+T7VSiR/OsV6suWTGSRDcEjxPzobdwJNGd5Y/GvV6s8pP7LxSBM2nwbuAwz5Gq0luseQrPj316vVBSZqewhoeo3NtcrBE/oE8g80/W0jSwqz4z7K9Xq9Px23E8/wAhKybaG4PQ0I1WyhUFlDA++vV6tuPsxsHQu9s47p2HsJo9ZTPJH6RzWK9VMgsSaSKOdgsiAg+yqsulWhOdh+dZr1QZYrnTbdT6O8e5qmitY1OMufea9XqBxaSJF6L8a9kjNZr1E40Dkgn7qiMENyrCaJGGM8ivV6hQE9gDUezemODIsBjfzjbbSnc3t5pM+20u5toPAds16vVP2XQw6L2gv7lB3zIT57aZ4J3kQFsZ91er1MhWtE5PFRlzzXq9Tom+iHvG3damUkjmvV6ixUYeomNYr1KMa4z1rGxazXq5HH//2Q==">
+            <a href="https://www.onlinegdb.com/edit/Mz1shndih"><h3 style="padding:10px;">🍳 My project</h3></a>
+        </div>
+        
+    </div>
+</section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = document.querySelector(this.getAttribute('href'));
-                section.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+<!-- CALCULATOR -->
+<section id="calculator">
+    <h2>Calculator</h2>
 
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-    </script>
+    <div class="calc">
+        <input type="text" id="display" disabled>
+
+        <div class="buttons">
+            <button onclick="press('7')">7</button>
+            <button onclick="press('8')">8</button>
+            <button onclick="press('9')">9</button>
+            <button onclick="press('/')">/</button>
+
+            <button onclick="press('4')">4</button>
+            <button onclick="press('5')">5</button>
+            <button onclick="press('6')">6</button>
+            <button onclick="press('*')">*</button>
+
+            <button onclick="press('1')">1</button>
+            <button onclick="press('2')">2</button>
+            <button onclick="press('3')">3</button>
+            <button onclick="press('-')">-</button>
+
+            <button onclick="press('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="press('+')">+</button>
+        </div>
+    </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar">
+    <h2>Calendar</h2>
+    <div class="calendar">
+        <div id="calendar-header">
+            <button onclick="prevMonth()" class="btn">&lt;</button>
+            <h3 id="month-year"></h3>
+            <button onclick="nextMonth()" class="btn">&gt;</button>
+        </div>
+        <div id="calendar-grid">
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <input id="contact-name" type="text" placeholder="Your Name">
+    <input id="contact-email" type="email" placeholder="Your Email">
+    <textarea id="contact-message" placeholder="Your Message"></textarea>
+    <button class="btn" onclick="submitContact()">Send</button>
+</section>
+
+<footer>
+    © 2026 Simran Portfolio
+</footer>
+
+<script>
+// CALCULATOR
+function press(val){
+    document.getElementById("display").value += val;
+}
+
+function calculate(){
+    try{
+        document.getElementById("display").value =
+        eval(document.getElementById("display").value);
+    }catch{
+        alert("Invalid Input");
+    }
+}
+
+function clearDisplay(){
+    document.getElementById("display").value = "";
+}
+
+// CALENDAR
+let currentDate = new Date();
+
+function renderCalendar(){
+    const month = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDay = new Date(year, month + 1, 0).getDate();
+    const today = new Date().getDate();
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
+    document.getElementById("month-year").innerText = currentDate.toLocaleDateString('en-US', {month: 'long', year: 'numeric'});
+
+    const grid = document.getElementById("calendar-grid");
+    // Clear existing days
+    const existingDays = grid.querySelectorAll('.day');
+    existingDays.forEach(day => day.remove());
+
+    // Add empty cells for days before first day
+    for(let i = 0; i < firstDay; i++){
+        const empty = document.createElement('div');
+        grid.appendChild(empty);
+    }
+
+    // Add days
+    for(let day = 1; day <= lastDay; day++){
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'day';
+        dayDiv.innerText = day;
+        if(day === today && month === currentMonth && year === currentYear){
+            dayDiv.classList.add('today');
+        }
+        grid.appendChild(dayDiv);
+    }
+}
+
+function prevMonth(){
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+}
+
+function nextMonth(){
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+}
+
+function submitContact(){
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+
+    if(!name || !email || !message){
+        alert('Please fill in all contact fields.');
+        return;
+    }
+
+    // Simulate contact form submission
+    alert('Thank you, ' + name + '! Your message has been sent.');
+
+    document.getElementById('contact-name').value = '';
+    document.getElementById('contact-email').value = '';
+    document.getElementById('contact-message').value = '';
+}
+
+renderCalendar();
+</script>
+
 </body>
 </html>
+
